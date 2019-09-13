@@ -28,12 +28,14 @@ namespace DailyProgramming
             int overhead = 0;
             while(thereAreNextPointers(l1, l2))
             {
-
                 int sum = l1.val + l2.val + overhead;
                 if(sum >= 10)
                 {
                     overhead = 1;
                     sum %= 10;
+                } else
+                {
+                    overhead = 0;
                 }
                 sumNode.val = sum;
 
@@ -51,12 +53,26 @@ namespace DailyProgramming
 
             while(notNullNode != null)
             {
-                sumNode.next = new ListNode(notNullNode.val);
+                int sum = notNullNode.val + overhead;
+                if(sum >= 10)
+                {
+                    overhead = 1;
+                    sum %= 10;
+                } else
+                {
+                    overhead = 0;
+                }
+                sumNode.next = new ListNode(sum);
                 if(notNullNode.next != null)
                 {
                     sumNode = sumNode.next;
                 }
                 notNullNode = notNullNode.next;
+            }
+
+            if(overhead != 0)
+            {
+                sumNode.next = new ListNode(overhead);
             }
 
             return returnNode;

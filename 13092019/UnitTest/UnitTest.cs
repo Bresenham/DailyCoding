@@ -89,5 +89,71 @@ namespace UnitTest
             Assert.AreEqual(result.next.next.val, 7);
             Assert.AreEqual(result.next.next.next.val, 9);
         }
+
+        [TestMethod]
+        public void OverheadAdditionTest()
+        {
+            /* Arrange */
+            ListNode first = new ListNode(2);
+            first.next = new ListNode(3);
+
+            ListNode second = new ListNode(8);
+
+            /* Act */
+            ListNode result = Daily.AddTwoNumbers(first, second);
+
+            /* Assert - This would be 32 + 8 = 40 */
+            Assert.AreEqual(result.val, 0);
+            Assert.AreEqual(result.next.val, 4);
+        }
+
+        [TestMethod]
+        public void OverheadAdditionTest2()
+        {
+            /* Arrange */
+            ListNode first = new ListNode(3);
+            first.next = new ListNode(3);
+
+            ListNode second = new ListNode(9);
+
+            /* Act */
+            ListNode result = Daily.AddTwoNumbers(first, second);
+
+            /* Assert - This would be 33 + 9 = 42 */
+            Assert.AreEqual(result.val, 2);
+            Assert.AreEqual(result.next.val, 4);
+        }
+
+        [TestMethod]
+        public void NewDigitAfterAddition()
+        {
+            /* Arrange */
+            ListNode first = new ListNode(4);
+
+            ListNode second = new ListNode(6);
+
+            /* Act */
+            ListNode result = Daily.AddTwoNumbers(first, second);
+
+            /* Assert - This would be 4 + 6 = 10 */
+            Assert.AreEqual(result.val, 0);
+            Assert.AreEqual(result.next.val, 1);
+        }
+
+        [TestMethod]
+        public void NewDigitAfterAddition2()
+        {
+            /* Arrange */
+            ListNode first = new ListNode(5);
+
+            ListNode second = new ListNode(6);
+
+            /* Act */
+            ListNode result = Daily.AddTwoNumbers(first, second);
+
+            /* Assert - This would be 5 + 6 = 11 */
+            Assert.AreEqual(result.val, 1);
+            Assert.AreEqual(result.next.val, 1);
+        }
     }
 }
